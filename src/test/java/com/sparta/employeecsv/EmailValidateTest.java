@@ -1,5 +1,6 @@
 package com.sparta.employeecsv;
 
+import com.sparta.employeecsv.model.EmailValidate;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,15 +9,13 @@ class EmailValidateTest {
 
     @Test
     void isValidTrue() {
-        EmailValidate val = new EmailValidate();
 
-        assertEquals(true, EmailValidate.isValid("a.b@gmail.com"));
+        assertTrue(EmailValidate.isValid("a.b@gmail.com"));
     }
 
     @Test
     void isValidFalse() {
-        EmailValidate val = new EmailValidate();
 
-        assertEquals(false, EmailValidate.isValid("a/b@gmail,com"));
+        assertFalse(EmailValidate.isValid("a/b@gmail,com"));
     }
 }
