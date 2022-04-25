@@ -1,4 +1,4 @@
-package com.sparta.employeecsv.controler;
+package com.sparta.employeecsv.controller;
 
 import com.sparta.employeecsv.model.CSVExtract;
 import com.sparta.employeecsv.model.Employee;
