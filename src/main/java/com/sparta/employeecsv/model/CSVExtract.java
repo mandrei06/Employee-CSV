@@ -5,11 +5,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class CSVExtract {
-    public static List<Employee> readCSV(String fileName) {
-        List<Employee> employeeList = new ArrayList<>();
+    public static HashMap<Integer,Employee> duplicates=new HashMap<>();
+    public static HashMap<Integer, Employee> readCSV(String fileName) {
+        HashMap<Integer, Employee> employeeList = new HashMap<>();
+        //HashSet<Employee> employeeList=new HashSet<>();
         List<String> lines;
         lines = getLines(fileName);
         for (String line : lines) {
@@ -42,7 +46,13 @@ public class CSVExtract {
             employee.setDateOfJoining(Date.valueOf(reformatDateOfJoining));
 
             employee.setSalary(Float.parseFloat(words[9]));
-            employeeList.add(employee);
+
+            //check for duplicates
+            if (employeeList.containsKey(Integer.valueOf(words[0]))) {
+                duplicates.put(Integer.valueOf(words[0]), employee);
+            } else {
+                employeeList.put(Integer.valueOf(words[0]), employee);
+            }
         }
 
         return employeeList;
