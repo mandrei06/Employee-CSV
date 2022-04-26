@@ -1,4 +1,4 @@
-package com.sparta.employeecsv.model;
+package com.sparta.employeecsv.model.entities;
 
 import java.sql.Date;
 
@@ -12,7 +12,7 @@ public class Employee {
     public String email;
     public Date dateOfBirth;
     public Date dateOfJoining;
-    public float salary;
+    public int salary;
 
     public int getId() {
         return id;
@@ -86,11 +86,11 @@ public class Employee {
         this.dateOfJoining = dateOfJoining;
     }
 
-    public float getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(float salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 

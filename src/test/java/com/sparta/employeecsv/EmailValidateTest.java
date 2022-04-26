@@ -1,6 +1,6 @@
 package com.sparta.employeecsv;
 
-import com.sparta.employeecsv.model.EmailValidate;
+import com.sparta.employeecsv.model.commands.EmailValidate;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,4 +1,6 @@
-package com.sparta.employeecsv.model;
+package com.sparta.employeecsv.model.commands;
+
+import com.sparta.employeecsv.model.entities.Employee;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CSVExtract {
-    public static HashMap<Integer,Employee> duplicates=new HashMap<>();
+    public static HashMap<Integer, Employee> duplicates=new HashMap<>();
     public static HashMap<Integer, Employee> readCSV(String fileName) {
         HashMap<Integer, Employee> employeeList = new HashMap<>();
         List<String> lines;
@@ -43,7 +45,7 @@ public class CSVExtract {
             String reformatDateOfJoining = dateOfJoining[2] + "-" + dateOfJoining[0] + "-" + dateOfJoining[1];
             employee.setDateOfJoining(Date.valueOf(reformatDateOfJoining));
 
-            employee.setSalary(Float.parseFloat(words[9]));
+            employee.setSalary(Integer.parseInt(words[9]));
 
             //check for duplicates
             if (employeeList.containsKey(Integer.valueOf(words[0]))) {
