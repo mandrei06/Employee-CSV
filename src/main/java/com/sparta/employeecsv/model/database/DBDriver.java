@@ -3,7 +3,6 @@ package com.sparta.employeecsv.model.database;
 import com.sparta.employeecsv.model.entities.Employee;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
@@ -15,28 +14,35 @@ public class DBDriver {
 
             Statement statement = conn.createStatement();
 
-//            ResultSet rs = statement.executeQuery("SELECT * FROM film_text");
-//            while (rs.next()) {
-//                System.out.println(rs.getString("description"));
-//            }
 
-            int rows_updated;
             statement.executeUpdate("DROP TABLE IF EXISTS employees;");
-            rows_updated=statement.executeUpdate("CREATE TABLE Employees (\n" +
-                    "    EmployeeID int,\n" +
-                    "    NamePrefix varchar(255),\n" +
-                    "    FirstName varchar(255),\n" +
-                    "    MiddleInitial varchar(255),\n" +
-                    "    LastName varchar(255),\n" +
-                    "    Gender varchar(255),\n" +
-                    "    Email varchar(255),\n" +
-                    "    DateOfBirth date,\n" +
-                    "    DateOfJoining date,\n" +
-                    "    salary int\n" +
-                    ");");
+            statement.executeUpdate("""
+                    CREATE TABLE Employees (
+                        EmployeeID int,
+                        NamePrefix varchar(255),
+                        FirstName varchar(255),
+                        MiddleInitial varchar(255),
+                        LastName varchar(255),
+                        Gender varchar(255),
+                        Email varchar(255),
+                        DateOfBirth date,
+                        DateOfJoining date,
+                        salary int
+                    );""");
 
             for (Integer id : employees.keySet()){
                 Employee employee= employees.get(id);
+                statement.executeUpdate("INSERT INTO employees(EmployeeID,\n" +
+                        "NamePrefix, FirstName,\n" +
+                        "MiddleInitial, LastName,\n" +
+                        "Gender, Email,\n" +
+                        "DateOfBirth, DateOfJoining,\n" +
+                        "salary\n" +
+                        ") VALUES("+employee.getId()+",'" + employee.getPrefix()+"','"
+                        + employee.getFirstName()+"','" + employee.getMiddleInitial()+"','"
+                        + employee.getLastName()+"','" + employee.isGender()+"','"
+                        + employee.getEmail()+"','" + employee.getDateOfBirth()+"','"
+                        + employee.getDateOfJoining()+"'," + employee.getSalary()+");");
             }
 
 

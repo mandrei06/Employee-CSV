@@ -1,6 +1,7 @@
 package com.sparta.employeecsv.controller;
 
 import com.sparta.employeecsv.model.commands.CSVExtract;
+import com.sparta.employeecsv.model.database.DBDriver;
 import com.sparta.employeecsv.model.entities.Employee;
 import com.sparta.employeecsv.view.EmployeeDisplay;
 
@@ -14,7 +15,10 @@ public class Main {
         EmployeeDisplay.employeesDisplay(employees);
 
         // Employee Duplicate List
-        EmployeeDisplay.employeesDisplay(CSVExtract.duplicates);
+       // EmployeeDisplay.employeesDisplay(CSVExtract.duplicates);
+
+        // Insert employees data in our database
+        DBDriver.databaseWriter(employees);
     }
 
 

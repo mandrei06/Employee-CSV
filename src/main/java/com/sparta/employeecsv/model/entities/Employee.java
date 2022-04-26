@@ -86,7 +86,7 @@ public class Employee {
         this.dateOfJoining = dateOfJoining;
     }
 
-    public float getSalary() {
+    public int getSalary() {
         return salary;
     }
 
