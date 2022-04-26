@@ -2,18 +2,20 @@ package com.sparta.employeecsv.controller;
 
 import com.sparta.employeecsv.model.CSVExtract;
 import com.sparta.employeecsv.model.Employee;
+import com.sparta.employeecsv.view.EmployeeDisplay;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        List<Employee> employees = CSVExtract.readCSV("EmployeeRecords.csv");
-        for (Employee employee : employees) {
-            System.out.println(employee.getId()+" " + employee.getPrefix()+" "
-                    + employee.getFirstName()+" " + employee.getMiddleInitial()+" "
-                    + employee.getLastName()+" " + employee.isGender()+" "
-                    + employee.getEmail()+" " + employee.getDateOfBirth()+" "
-                    + employee.getDateOfJoining()+" " + employee.getSalary());
-        }
+        HashMap<Integer, Employee> employees = CSVExtract.readCSV("EmployeeRecords.csv");
+
+        // Employee List
+        EmployeeDisplay.employeesDisplay(employees, employees);
+
+        // Employee Duplicate List
+        EmployeeDisplay.employeesDisplay(CSVExtract.duplicates, employees);
     }
+
+
 }
