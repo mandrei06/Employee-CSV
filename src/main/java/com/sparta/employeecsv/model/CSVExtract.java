@@ -6,14 +6,12 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 public class CSVExtract {
     public static HashMap<Integer,Employee> duplicates=new HashMap<>();
     public static HashMap<Integer, Employee> readCSV(String fileName) {
         HashMap<Integer, Employee> employeeList = new HashMap<>();
-        //HashSet<Employee> employeeList=new HashSet<>();
         List<String> lines;
         lines = getLines(fileName);
         for (String line : lines) {
@@ -72,12 +70,6 @@ public class CSVExtract {
             //loop over all remaining lines
             while ((line = br.readLine()) != null) {
                 result.add(line);
-//                String[] values = line.split(",");
-//                System.out.print("[");
-//                for (int i = 0; i < values.length; i++) {
-//                        System.out.print(values[i] + ", ");
-//                }
-//                System.out.println("]");
             }
         } catch (IOException e) {
             e.printStackTrace();
