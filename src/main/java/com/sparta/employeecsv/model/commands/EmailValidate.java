@@ -1,4 +1,4 @@
-package com.sparta.employeecsv.model;
+package com.sparta.employeecsv.model.commands;
 
 import java.util.regex.Pattern;
 

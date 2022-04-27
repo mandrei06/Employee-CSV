@@ -1,15 +1,19 @@
-package com.sparta.employeecsv.model;
+package com.sparta.employeecsv.model.commands;
+
+import com.sparta.employeecsv.model.entities.Employee;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class CSVExtract {
-    public static List<Employee> readCSV(String fileName) {
-        List<Employee> employeeList = new ArrayList<>();
+    public static HashMap<Integer, Employee> duplicates=new HashMap<>();
+    public static HashMap<Integer, Employee> readCSV(String fileName) {
+        HashMap<Integer, Employee> employeeList = new HashMap<>();
         List<String> lines;
         lines = getLines(fileName);
         for (String line : lines) {
@@ -41,8 +45,14 @@ public class CSVExtract {
             String reformatDateOfJoining = dateOfJoining[2] + "-" + dateOfJoining[0] + "-" + dateOfJoining[1];
             employee.setDateOfJoining(Date.valueOf(reformatDateOfJoining));
 
-            employee.setSalary(Float.parseFloat(words[9]));
-            employeeList.add(employee);
+            employee.setSalary(Integer.parseInt(words[9]));
+
+            //check for duplicates
+            if (employeeList.containsKey(Integer.valueOf(words[0]))) {
+                duplicates.put(Integer.valueOf(words[0]), employee);
+            } else {
+                employeeList.put(Integer.valueOf(words[0]), employee);
+            }
         }
 
         return employeeList;
@@ -62,12 +72,6 @@ public class CSVExtract {
             //loop over all remaining lines
             while ((line = br.readLine()) != null) {
                 result.add(line);
-//                String[] values = line.split(",");
-//                System.out.print("[");
-//                for (int i = 0; i < values.length; i++) {
-//                        System.out.print(values[i] + ", ");
-//                }
-//                System.out.println("]");
             }
         } catch (IOException e) {
             e.printStackTrace();
