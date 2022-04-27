@@ -3,6 +3,7 @@ package com.sparta.employeecsv.model.database;
 import com.sparta.employeecsv.model.entities.Employee;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
@@ -13,6 +14,8 @@ public class DBDriver {
             Connection conn= ConnectionFactory.getConnection();
 
             Statement statement = conn.createStatement();
+
+
 
 
             statement.executeUpdate("DROP TABLE IF EXISTS employees;");
@@ -30,19 +33,22 @@ public class DBDriver {
                         salary int
                     );""");
 
+            PreparedStatement pStatement=conn.prepareStatement("INSERT INTO employees(EmployeeID,NamePrefix, " +
+                            "FirstName,MiddleInitial, LastName,Gender, Email, DateOfBirth, DateOfJoining, salary) " +
+                    "VALUES(?,?,?,?,?,?,?,?,?,?)");
             for (Integer id : employees.keySet()){
                 Employee employee= employees.get(id);
-                statement.executeUpdate("INSERT INTO employees(EmployeeID,\n" +
-                        "NamePrefix, FirstName,\n" +
-                        "MiddleInitial, LastName,\n" +
-                        "Gender, Email,\n" +
-                        "DateOfBirth, DateOfJoining,\n" +
-                        "salary\n" +
-                        ") VALUES("+employee.getId()+",'" + employee.getPrefix()+"','"
-                        + employee.getFirstName()+"','" + employee.getMiddleInitial()+"','"
-                        + employee.getLastName()+"','" + employee.isGender()+"','"
-                        + employee.getEmail()+"','" + employee.getDateOfBirth()+"','"
-                        + employee.getDateOfJoining()+"'," + employee.getSalary()+");");
+                pStatement.setInt(1,employee.getId());
+                pStatement.setString(2,employee.getPrefix());
+                pStatement.setString(3,employee.getFirstName());
+                pStatement.setString(4, String.valueOf(employee.getMiddleInitial()));
+                pStatement.setString(5,employee.getLastName());
+                pStatement.setString(6, String.valueOf(employee.isGender()));
+                pStatement.setString(7,employee.getEmail());
+                pStatement.setDate(8,employee.getDateOfBirth());
+                pStatement.setDate(9,employee.getDateOfJoining());
+                pStatement.setInt(10,employee.getSalary());
+                pStatement.executeUpdate();
             }
 
 
