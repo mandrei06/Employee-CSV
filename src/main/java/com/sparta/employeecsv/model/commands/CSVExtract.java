@@ -1,6 +1,8 @@
 package com.sparta.employeecsv.model.commands;
 
 import com.sparta.employeecsv.model.entities.Employee;
+import com.sparta.employeecsv.model.validation.ValidateDate;
+import com.sparta.employeecsv.model.validation.ValidateEmail;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -28,22 +30,35 @@ public class CSVExtract {
                 employee.setMiddleInitial(middleInitial);
             }
             employee.setLastName(words[4]);
-            if (words[5].length() == 1)
+            if (words[5].length() == 1) {
                 employee.setGender(words[5].charAt(0));
+            } else {
+                // put entry into seperate file?
+            }
 
-            if (EmailValidate.isValid(words[6])) {
+            if (ValidateEmail.isValid(words[6])) {
                 employee.setEmail(words[6]);
+            } else {
+                // put entry into seperate file?
             }
 
             //Date Of Birth
-            String[] dateOfBirth = words[7].split("/");
-            String reformatDateOfBirth = dateOfBirth[2] + "-" + dateOfBirth[0] + "-" + dateOfBirth[1];
-            employee.setDateOfBirth(Date.valueOf(reformatDateOfBirth));
+            if (ValidateDate.isValid(words[7])) {
+                String[] dateOfBirth = words[7].split("/");
+                String reformatDateOfBirth = dateOfBirth[2] + "-" + dateOfBirth[0] + "-" + dateOfBirth[1];
+                employee.setDateOfBirth(Date.valueOf(reformatDateOfBirth));
+            } else {
+                // put entry into seperate file?
+            }
 
             //Date Of Joining
-            String[] dateOfJoining = words[8].split("/");
-            String reformatDateOfJoining = dateOfJoining[2] + "-" + dateOfJoining[0] + "-" + dateOfJoining[1];
-            employee.setDateOfJoining(Date.valueOf(reformatDateOfJoining));
+            if (ValidateDate.isValid(words[8])) {
+                String[] dateOfJoining = words[8].split("/");
+                String reformatDateOfJoining = dateOfJoining[2] + "-" + dateOfJoining[0] + "-" + dateOfJoining[1];
+                employee.setDateOfJoining(Date.valueOf(reformatDateOfJoining));
+            } else {
+                // put entry into seperate file?
+            }
 
             employee.setSalary(Integer.parseInt(words[9]));
 

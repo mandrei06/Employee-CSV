@@ -1,8 +1,8 @@
-package com.sparta.employeecsv.model.commands;
+package com.sparta.employeecsv.model.validation;
 
 import java.util.regex.Pattern;
 
-public class EmailValidate {
+public class ValidateEmail {
     public static Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     public static boolean isValid(String s) {
