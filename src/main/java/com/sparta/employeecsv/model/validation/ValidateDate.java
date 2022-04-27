@@ -7,9 +7,16 @@ import java.text.SimpleDateFormat;
 public class ValidateDate{
 
     public static boolean isValid(String s) {
-        SimpleDateFormat date = new SimpleDateFormat("dd/MM/year");
+        if (s == null) {
+            return false;
+        }
+
+        System.out.println(s);
+        SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+
         try {
             Date d = date.parse(s);
+            System.out.println(d);
         } catch (ParseException e) {
             return false;
         }

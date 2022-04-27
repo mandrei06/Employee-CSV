@@ -5,12 +5,17 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class EmailValidateTest {
+class ValidateEmailTest {
 
     @Test
     void isValidTrue() {
 
         assertTrue(ValidateEmail.isValid("a.b@gmail.com"));
+    }
+
+    @Test
+    void isValidNull() {
+        assertFalse(ValidateEmail.isValid(null));
     }
 
     @Test

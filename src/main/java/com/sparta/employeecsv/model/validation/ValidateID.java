@@ -1,16 +1,21 @@
 package com.sparta.employeecsv.model.validation;
 
 public class ValidateID {
-        public boolean isValid(String s) {
-            if (s.length() > 6) {
+        public static boolean isValid(String s) {
+            if (s == null) {
                 return false;
             }
 
             try {
-                Integer.parseInt(s);
+                int ID = Integer.parseInt(s);
+                if(ID < 0) {
+                    return false;
+                }
             } catch (NumberFormatException e) {
                 return false;
             }
+
+
 
             return true;
         }
