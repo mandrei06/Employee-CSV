@@ -13,14 +13,13 @@ public class Main {
         HashMap<Integer, Employee> employees = CSVExtract.readCSV("EmployeeRecords.csv");
 
         // Employee List
-        //EmployeeDisplay.employeesDisplay(employees);
+        EmployeeDisplay.employeesDisplay(employees);
 
         // Employee Duplicate List
-       // EmployeeDisplay.employeesDisplay(CSVExtract.duplicates);
+        EmployeeDisplay.employeesDisplay(CSVExtract.duplicates);
 
         // Insert employees data in our database
-        //DBDriver.databaseWriter(employees);
+        DBDriver.databaseWriter(employees);
 
-        ValidateDate.isValid("32/13/2030");
     }
 }
