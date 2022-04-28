@@ -33,13 +33,13 @@ public class CSVExtract {
             if (words[5].length() == 1) {
                 employee.setGender(words[5].charAt(0));
             } else {
-                // put entry into seperate file?
+                // put entry into separate file?
             }
 
             if (ValidateEmail.isValid(words[6])) {
                 employee.setEmail(words[6]);
             } else {
-                // put entry into seperate file?
+                // put entry into separate file?
             }
 
             //Date Of Birth
@@ -48,7 +48,7 @@ public class CSVExtract {
                 String reformatDateOfBirth = dateOfBirth[2] + "-" + dateOfBirth[0] + "-" + dateOfBirth[1];
                 employee.setDateOfBirth(Date.valueOf(reformatDateOfBirth));
             } else {
-                // put entry into seperate file?
+                // put entry into separate file?
             }
 
             //Date Of Joining
@@ -57,7 +57,7 @@ public class CSVExtract {
                 String reformatDateOfJoining = dateOfJoining[2] + "-" + dateOfJoining[0] + "-" + dateOfJoining[1];
                 employee.setDateOfJoining(Date.valueOf(reformatDateOfJoining));
             } else {
-                // put entry into seperate file?
+                // put entry into separate file?
             }
 
             employee.setSalary(Integer.parseInt(words[9]));

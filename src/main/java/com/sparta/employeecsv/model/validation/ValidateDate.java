@@ -14,6 +14,8 @@ public class ValidateDate{
         System.out.println(s);
         SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
 
+        date.setLenient(false);
+
         try {
             Date d = date.parse(s);
             System.out.println(d);

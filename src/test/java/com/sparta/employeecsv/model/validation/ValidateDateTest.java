@@ -20,11 +20,6 @@ class ValidateDateTest {
     }
 
     @Test
-    void isValidInvalidYear() {
-        assertFalse(ValidateDate.isValid("13/10/2023"));
-    }
-
-    @Test
     void isValidInvalidCombination() {
         assertFalse(ValidateDate.isValid("31/2/1990"));
     }

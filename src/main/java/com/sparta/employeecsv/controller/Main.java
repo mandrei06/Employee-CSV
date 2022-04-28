@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        //HashMap<Integer, Employee> employees = CSVExtract.readCSV("EmployeeRecords.csv");
+        HashMap<Integer, Employee> employees = CSVExtract.readCSV("EmployeeRecords.csv");
 
         // Employee List
         //EmployeeDisplay.employeesDisplay(employees);

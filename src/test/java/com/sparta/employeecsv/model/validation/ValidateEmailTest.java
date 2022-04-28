@@ -1,4 +1,4 @@
-package com.sparta.employeecsv;
+package com.sparta.employeecsv.model.validation;
 
 import com.sparta.employeecsv.model.validation.ValidateEmail;
 import org.junit.jupiter.api.Test;
