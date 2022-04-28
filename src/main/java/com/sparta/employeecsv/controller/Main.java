@@ -18,7 +18,10 @@ public class Main {
        // EmployeeDisplay.employeesDisplay(CSVExtract.duplicates);
 
         // Insert employees data in our database
+        long startTime = System.nanoTime();
         DBDriver.databaseWriter(employees);
+        long endTime = System.nanoTime();
+        System.out.println("Done in " + (endTime - startTime)/1000000000.0);
     }
 
 

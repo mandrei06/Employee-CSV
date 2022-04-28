@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 public class DBDriver {
     public static void databaseWriter(HashMap<Integer, Employee> employees) {
+        int row = 0;
         try{
             Connection conn= ConnectionFactory.getConnection();
 
@@ -49,6 +50,7 @@ public class DBDriver {
                 pStatement.setDate(9,employee.getDateOfJoining());
                 pStatement.setInt(10,employee.getSalary());
                 pStatement.executeUpdate();
+                System.out.println(row++);
             }
 
 
