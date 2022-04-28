@@ -3,6 +3,7 @@ package com.sparta.employeecsv.controller;
 import com.sparta.employeecsv.model.commands.CSVExtract;
 import com.sparta.employeecsv.model.database.DBDriver;
 import com.sparta.employeecsv.model.entities.Employee;
+import com.sparta.employeecsv.model.validation.ValidateDate;
 import com.sparta.employeecsv.view.EmployeeDisplay;
 
 import java.util.HashMap;
@@ -12,14 +13,14 @@ public class Main {
         HashMap<Integer, Employee> employees = CSVExtract.readCSV("EmployeeRecords.csv");
 
         // Employee List
-        EmployeeDisplay.employeesDisplay(employees);
+        //EmployeeDisplay.employeesDisplay(employees);
 
         // Employee Duplicate List
        // EmployeeDisplay.employeesDisplay(CSVExtract.duplicates);
 
         // Insert employees data in our database
-        DBDriver.databaseWriter(employees);
+        //DBDriver.databaseWriter(employees);
+
+        ValidateDate.isValid("32/13/2030");
     }
-
-
 }
