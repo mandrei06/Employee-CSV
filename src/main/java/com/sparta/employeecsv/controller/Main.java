@@ -18,8 +18,11 @@ public class Main {
         // Employee Duplicate List
         EmployeeDisplay.employeesDisplay(CSVExtract.duplicates);
 
+        long startTime = System.nanoTime();
         // Insert employees data in our database
         DBDriver.databaseWriter(employees);
+        long endTime = System.nanoTime();
 
+        System.out.println("Done in " + (endTime - startTime) / 1000000000.0 + " seconds.");
     }
 }

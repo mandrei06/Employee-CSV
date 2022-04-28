@@ -25,13 +25,12 @@ public class CSVExtract {
             employee.setPrefix(words[1]);
             employee.setFirstName(words[2]);
             //Check for middleInitial
-            if (words[3].length() == 1) {
-                char middleInitial = words[3].charAt(0);
-                employee.setMiddleInitial(middleInitial);
+            if (words[3].length() == 1) {;
+                employee.setMiddleInitial(words[3]);
             }
             employee.setLastName(words[4]);
             if (words[5].length() == 1) {
-                employee.setGender(words[5].charAt(0));
+                employee.setGender(words[5]);
             } else {
                 // put entry into separate file?
             }
@@ -45,6 +44,7 @@ public class CSVExtract {
             //Date Of Birth
             if (ValidateDate.isValid(words[7])) {
                 String[] dateOfBirth = words[7].split("/");
+                // year-month-day
                 String reformatDateOfBirth = dateOfBirth[2] + "-" + dateOfBirth[0] + "-" + dateOfBirth[1];
                 employee.setDateOfBirth(Date.valueOf(reformatDateOfBirth));
             } else {

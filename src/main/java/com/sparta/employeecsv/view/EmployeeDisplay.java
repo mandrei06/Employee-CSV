@@ -11,7 +11,7 @@ public class EmployeeDisplay {
             Employee employee= employees.get(id);
             System.out.println(employee.getId()+" " + employee.getPrefix()+" "
                     + employee.getFirstName()+" " + employee.getMiddleInitial()+" "
-                    + employee.getLastName()+" " + employee.isGender()+" "
+                    + employee.getLastName()+" " + employee.getGender()+" "
                     + employee.getEmail()+" " + employee.getDateOfBirth()+" "
                     + employee.getDateOfJoining()+" " + employee.getSalary());
         }

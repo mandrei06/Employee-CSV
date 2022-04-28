@@ -11,14 +11,12 @@ public class ValidateDate{
             return false;
         }
 
-        System.out.println(s);
-        SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
 
         date.setLenient(false);
 
         try {
             Date d = date.parse(s);
-            System.out.println(d);
         } catch (ParseException e) {
             return false;
         }
