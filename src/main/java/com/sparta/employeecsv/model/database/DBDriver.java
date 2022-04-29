@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class DBDriver {
     public static void databaseWriter(HashMap<Integer, Employee> employees) {
-        int row = 0;
+
         try{
             Connection conn= ConnectionFactory.getConnection();
 
@@ -36,21 +36,12 @@ public class DBDriver {
                         salary int
                     );""");
 
+
+
+
             for (Integer id : employees.keySet()){
                 Employee employee= employees.get(id);
-                preparedStatement.setInt(1, employee.getId());
-                preparedStatement.setString(2, employee.getPrefix());
-                preparedStatement.setString(3, employee.getFirstName());
-                preparedStatement.setString(4, employee.getMiddleInitial());
-                preparedStatement.setString(5, employee.getLastName());
-                preparedStatement.setString(6, employee.getGender());
-                preparedStatement.setString(7, employee.getEmail());
-                preparedStatement.setDate(8, employee.getDateOfBirth());
-                preparedStatement.setDate(9, employee.getDateOfJoining());
-                preparedStatement.setInt(10, employee.getSalary());
-                preparedStatement.executeUpdate();
-                System.out.println(row++);
-
+                EmployeeDAO.createEmployee(employee);
 //              statement.executeUpdate("INSERT INTO employees(EmployeeID,\n" +
 //                        "NamePrefix, FirstName,\n" +
 //                        "MiddleInitial, LastName,\n" +
@@ -63,6 +54,13 @@ public class DBDriver {
 //                        + employee.getEmail()+"','" + employee.getDateOfBirth()+"','"
 //                        + employee.getDateOfJoining()+"'," + employee.getSalary()+");");
             }
+            // Example of code for retrieving data
+//            Employee foundEmployee=EmployeeDAO.getEmployeeById(425467);
+//            System.out.println(foundEmployee.getId()+",'" + foundEmployee.getPrefix()+"','"
+//                        + foundEmployee.getFirstName()+"','" + foundEmployee.getMiddleInitial()+"','"
+//                        + foundEmployee.getLastName()+"','" + foundEmployee.getGender()+"','"
+//                        + foundEmployee.getEmail()+"','" + foundEmployee.getDateOfBirth()+"','"
+//                        + foundEmployee.getDateOfJoining()+"'," + foundEmployee.getSalary());
 
 
             statement.close();
