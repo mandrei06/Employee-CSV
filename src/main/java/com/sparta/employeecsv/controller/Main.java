@@ -16,7 +16,10 @@ public class Main {
         EmployeeDisplay.employeesDisplay(employees);
 
         // Employee Duplicate List
-        EmployeeDisplay.employeesDisplay(CSVExtract.duplicates);
+        //EmployeeDisplay.employeesDisplay(CSVExtract.duplicates);
+
+        // Employee Corrupted Records List
+        //EmployeeDisplay.employeesDisplay(CSVExtract.corruptedData);
 
         long startTime = System.nanoTime();
       
