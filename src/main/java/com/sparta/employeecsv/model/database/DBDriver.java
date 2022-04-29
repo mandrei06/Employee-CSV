@@ -15,6 +15,10 @@ public class DBDriver {
             Connection conn= ConnectionFactory.getConnection();
 
             Statement statement = conn.createStatement();
+            //                                              1           2           3       4               5       6       7       8           9            10
+            String insertString = "INSERT INTO employees(EmployeeID,NamePrefix, FirstName,MiddleInitial, LastName,Gender, Email,DateOfBirth, DateOfJoining,salary) " +
+                    "VALUES(?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement preparedStatement = conn.prepareStatement(insertString);
 
 
 
@@ -55,6 +59,7 @@ public class DBDriver {
 
 
             statement.close();
+            preparedStatement.close();
 
             ConnectionFactory.closeConnection();
         } catch (SQLException e) {
