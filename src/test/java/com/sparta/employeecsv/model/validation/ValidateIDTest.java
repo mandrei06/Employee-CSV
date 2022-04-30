@@ -12,14 +12,14 @@ class ValidateIDTest {
     }
     @Test
     void isValidNegative() {
-        assertTrue(ValidateID.isValid("-123456"));
+        assertFalse(ValidateID.isValid("-123456"));
     }
     @Test
     void isValidString() {
-        assertTrue(ValidateID.isValid("abcdef"));
+        assertFalse(ValidateID.isValid("abcdef"));
     }
     @Test
     void isValidMixed() {
-        assertTrue(ValidateID.isValid("1a3b5"));
+        assertFalse(ValidateID.isValid("1a3b5"));
     }
 }

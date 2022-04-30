@@ -1,8 +1,7 @@
 package com.sparta.employeecsv.model.commands;
 
 import com.sparta.employeecsv.model.entities.Employee;
-import com.sparta.employeecsv.model.validation.ValidateDate;
-import com.sparta.employeecsv.model.validation.ValidateEmail;
+import com.sparta.employeecsv.model.validation.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,6 +10,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class CSVExtract {
     public static HashMap<Integer, Employee> duplicates = new HashMap<>();
@@ -25,18 +25,34 @@ public class CSVExtract {
             Employee employee = new Employee();
             boolean corrupted = false;
             if (words.length == 10) {
-                employee.setId(Integer.parseInt(words[0]));
-                employee.setPrefix(words[1]);
-                employee.setFirstName(words[2]);
-                //Check for middleInitial
-                if (words[3].length() == 1) {
-
-                    employee.setMiddleInitial(words[3]);
+                if(ValidateID.isValid(words[0])){
+                    employee.setId(Integer.parseInt(words[0]));
                 }
-                employee.setLastName(words[4]);
-                if (words[5].length() == 1) {
+                employee.setPrefix(words[1]);
+
+                if(ValidateName.isValid(words[2])) {
+                    employee.setFirstName(words[2]);
+                } else {
+                    corrupted=true;
+                }
+
+                if (words[3].length() == 1) {
+                    employee.setMiddleInitial(words[3]);
+                } else {
+                    corrupted=true;
+                }
+
+                if(ValidateName.isValid(words[4])) {
+                    employee.setLastName(words[4]);
+                } else {
+                    corrupted=true;
+                }
+
+
+                if (words[5].equals("M") || words[5].equals("F")) {
                     employee.setGender(words[5]);
                 } else {
+                    System.out.println(words[5]);
                     corrupted=true;
                 }
 
@@ -46,7 +62,6 @@ public class CSVExtract {
                     corrupted=true;
                 }
 
-                //Date Of Birth
                 if (ValidateDate.isValid(words[7])) {
                     String[] dateOfBirth = words[7].split("/");
                     // year-month-day

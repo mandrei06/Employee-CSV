@@ -13,7 +13,8 @@ public class DBDriver {
 
         try{
             Connection conn= ConnectionFactory.getConnection();
-
+            int rows = 0;
+            System.out.println("yes");
             Statement statement = conn.createStatement();
             //                                              1           2           3       4               5       6       7       8           9            10
             String insertString = "INSERT INTO employees(EmployeeID,NamePrefix, FirstName,MiddleInitial, LastName,Gender, Email,DateOfBirth, DateOfJoining,salary) " +
@@ -28,6 +29,7 @@ public class DBDriver {
             for (Integer id : employees.keySet()){
                 Employee employee= employees.get(id);
                 EmployeeDAO.createEmployee(employee);
+                System.out.println(rows++);
 //              statement.executeUpdate("INSERT INTO employees(EmployeeID,\n" +
 //                        "NamePrefix, FirstName,\n" +
 //                        "MiddleInitial, LastName,\n" +
