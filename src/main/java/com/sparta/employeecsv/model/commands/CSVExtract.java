@@ -20,6 +20,7 @@ public class CSVExtract {
         HashMap<Integer, Employee> employeeList = new HashMap<>();
         List<String> lines;
         lines = getLines(fileName);
+        int i = 0, d = 0, c = 0;
         for (String line : lines) {
             String[] words = line.split(",");
             Employee employee = new Employee();
@@ -92,11 +93,14 @@ public class CSVExtract {
 
                 //check for duplicates
                 if (employeeList.containsKey(Integer.valueOf(words[0]))) {
-                    duplicates.put(Integer.valueOf(words[0]), employee);
+                    duplicates.put(d, employee);
+                    d++;
                 } else if (corrupted) {
-                    corruptedData.put(Integer.valueOf(words[0]), employee);
+                    corruptedData.put(c, employee);
+                    c++;
                 } else {
-                    employeeList.put(Integer.valueOf(words[0]), employee);
+                    employeeList.put(i, employee);
+                    i++;
                 }
             }else
             {

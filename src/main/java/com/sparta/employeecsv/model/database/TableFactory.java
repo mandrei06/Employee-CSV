@@ -5,10 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TableFactory {
-    private static boolean tableExist = false;
-
     public static void createTable() {
-        if (!tableExist) {
             Connection conn = ConnectionFactory.getConnection();
 
             try {
@@ -27,13 +24,10 @@ public class TableFactory {
                             DateOfJoining date,
                             salary int
                         );""");
-                tableExist=true;
-
 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
     }
 
 

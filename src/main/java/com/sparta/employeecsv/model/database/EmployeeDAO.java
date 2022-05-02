@@ -6,8 +6,7 @@ import java.sql.*;
 
 public class EmployeeDAO {
 
-    public static void createEmployee(Employee employee){
-        Connection conn= ConnectionFactory.getConnection();
+    public static void createEmployee(Employee employee, Connection conn){
         String insertString = "INSERT INTO employees(EmployeeID,NamePrefix, FirstName,MiddleInitial, LastName,Gender, Email,DateOfBirth, DateOfJoining,salary) " +
                 "VALUES(?,?,?,?,?,?,?,?,?,?)";
         try {
@@ -28,9 +27,8 @@ public class EmployeeDAO {
         }
     }
 
-    public static Employee getEmployeeById(int employee_id){
+    public static Employee getEmployeeById(int employee_id, Connection conn){
 
-        Connection conn = ConnectionFactory.getConnection();
         Statement statement;
         Employee result;
         try {

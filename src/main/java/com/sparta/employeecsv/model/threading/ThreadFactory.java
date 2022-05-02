@@ -6,27 +6,24 @@ import com.sparta.employeecsv.model.entities.Employee;
 import java.util.HashMap;
 
 public class ThreadFactory implements Runnable {
-    private final HashMap<Integer, Employee> halfArray=new HashMap<>();
-
+    private HashMap<Integer, Employee> employees;
+    private int start;
+    private int stop;
     public ThreadFactory(HashMap<Integer, Employee> employees, int start, int stop) {
-        int i=0;
-        for(Integer id : employees.keySet()){
-            if(i==start && start<stop-1){
-                halfArray.put(id,employees.get(id));
-                start++;
-            }
-            i++;
-        }
+        this.employees = employees;
+        this.start = start;
+        this.stop = stop;
+
     }
 
-    public void method() {
-        DBDriver.databaseWriter(halfArray);
-    }
-
+/*    public void method() {
+        DBDriver.databaseWriter(employees, start, stop);
+    }*/
 
     @Override
     public void run() {
+        DBDriver.databaseWriter(employees, start, stop);;
+//        System.out.println("Done ");
 
-        method();
     }
 }
