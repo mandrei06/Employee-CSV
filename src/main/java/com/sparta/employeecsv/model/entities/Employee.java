@@ -1,4 +1,4 @@
-package com.sparta.employeecsv.model;
+package com.sparta.employeecsv.model.entities;
 
 import java.sql.Date;
 
@@ -6,13 +6,13 @@ public class Employee {
     public int id;
     public String prefix;
     public String firstName;
-    public char middleInitial;
+    public String middleInitial;
     public String lastName;
-    public char gender;
+    public String gender;
     public String email;
     public Date dateOfBirth;
     public Date dateOfJoining;
-    public float salary;
+    public int salary;
 
     public int getId() {
         return id;
@@ -38,11 +38,11 @@ public class Employee {
         this.firstName = firstName;
     }
 
-    public char getMiddleInitial() {
+    public String getMiddleInitial() {
         return middleInitial;
     }
 
-    public void setMiddleInitial(char middleInitial) {
+    public void setMiddleInitial(String middleInitial) {
         this.middleInitial = middleInitial;
     }
 
@@ -54,11 +54,11 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public char isGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -86,11 +86,11 @@ public class Employee {
         this.dateOfJoining = dateOfJoining;
     }
 
-    public float getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(float salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 
